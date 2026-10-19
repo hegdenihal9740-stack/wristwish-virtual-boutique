@@ -627,7 +627,7 @@ function Index() {
           <h1>Private Flight.</h1>
           <h3>The watch collection.</h3>
           <p className="hero-description">A considered collection of modern timepieces, inspired by the quiet confidence of private aviation.</p>
-          <button className="hero-action" type="button" onClick={scrollToBottom}>Discover the collection <span aria-hidden="true">↘</span></button>
+          <button className="hero-action" type="button" onClick={() => void navigate({ to: "/collection" })}>Discover the collection <span aria-hidden="true">↘</span></button>
           <div className="scroll-cta">Scroll</div>
         </div>
         <div className="section right">
