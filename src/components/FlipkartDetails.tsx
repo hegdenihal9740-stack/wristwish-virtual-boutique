@@ -132,7 +132,7 @@ export function FlipkartDetails({
               <div className="fk-slider" ref={sliderRef} onScroll={onSlide}>
                 {imgs.map((src) => isFeat(src)
                   ? <div key={src} className="fk-imgbox fk-slide is-feat">{feat}</div>
-                  : <button type="button" key={src} className="fk-imgbox fk-slide" onClick={() => setFull(true)} aria-label="Open full image view"><img src={src} alt={w.name} draggable={false} /><span className="fk-zoomhint"><ZoomIn size={13} /> View full</span></button>)}
+                  : <div key={src} className="fk-imgbox fk-slide"><img src={src} alt={w.name} draggable={false} /></div>)}
               </div>
               <button type="button" className="fk-slide-nav is-prev" onClick={() => slideTo(idx - 1)} aria-label="Previous image"><ChevronLeft size={20} /></button>
               <button type="button" className="fk-slide-nav is-next" onClick={() => slideTo(idx + 1)} aria-label="Next image"><ChevronRight size={20} /></button>
@@ -242,19 +242,6 @@ export function FlipkartDetails({
           </div>
         </div>
       ); return asPage ? <div className="fk-panel fk-page">{body}</div> : <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="fk-panel">{body}</DialogContent></Dialog>; })()}
-    <Dialog open={full} onOpenChange={(o) => { setFull(o); setZoom(false); }}>
-      <DialogContent className="fk-full">
-        <DialogTitle className="sr-only">{w.name} full image view</DialogTitle>
-        <div className="fk-full-main">
-          <button type="button" className="fk-nav" onClick={() => go(-1)} aria-label="Previous image"><ChevronLeft size={28} /></button>
-          <div className={`fk-full-stage ${zoom ? 'is-zoom' : ''}`} onClick={() => setZoom((z) => !z)}>{isFeat(imgs[idx]) ? feat : <img src={imgs[idx]} alt={w.name} />}</div>
-          <button type="button" className="fk-nav" onClick={() => go(1)} aria-label="Next image"><ChevronRight size={28} /></button>
-        </div>
-        <div className="fk-full-thumbs">{imgs.map((src, i) => (
-          <button type="button" key={src} className={`fk-thumb ${i === idx ? 'is-active' : ''}`} onClick={() => { setIdx(i); setZoom(false); }}>{isFeat(src) ? <span className="fk-thumb-vid">Key</span> : <img src={src} alt="" />}</button>
-        ))}</div>
-      </DialogContent>
-    </Dialog>
     </>
   );
 }
