@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { MidnightBackdrop } from "@/components/MidnightBackdrop";
-import { WatchProductCard } from "@/components/AmazonWatchCards";
 import type { WatchTone } from "@/lib/watches";
 import watchGold from "@/assets/watch-gold.png";
 import watchSteel from "@/assets/watch-steel.png";
@@ -37,7 +35,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [openTone, setOpenTone] = useState<WatchTone | null>(null);
+  const navigate = useNavigate();
   const [tryOnTone, setTryOnTone] = useState<WatchTone | null>(null);
   const tryOnWatch = watchList.find(w => w.id === tryOnTone);
 
@@ -609,17 +607,11 @@ function Index() {
   const openFromImage = (e: React.MouseEvent) => {
     const img = (e.target as HTMLElement).closest<HTMLImageElement>(".watch-img");
     const tone = img?.dataset["tone"] as WatchTone | undefined;
-    if (tone) setOpenTone(tone);
+    if (tone) void navigate({ to: "/shop/$watchId", params: { watchId: tone } });
   };
 
   return (
     <div ref={rootRef} className="plane-app" data-tone="steel" onClick={openFromImage}>
-      <Dialog open={!!openTone} onOpenChange={(o) => !o && setOpenTone(null)}>
-        <DialogContent className="watch-card-dialog">
-          <DialogTitle className="sr-only">Watch details</DialogTitle>
-          {openTone && <WatchProductCard tone={openTone} />}
-        </DialogContent>
-      </Dialog>
       <MidnightBackdrop />
       {tryOnWatch && <VirtualTryOn watch={tryOnWatch} open onClose={() => setTryOnTone(null)} />}
       <nav className="site-nav" aria-label="Main navigation">
