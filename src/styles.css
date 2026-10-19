@@ -1245,3 +1245,14 @@ body:has(.watch-page) { background: var(--midnight-sky); }
 .rv-thumb button { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 999px; display: grid; place-items: center; background: var(--fk-bg); color: var(--fk-ink); }
 .rv-add { width: 64px; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px dashed var(--fk-line); border-radius: 6px; font-size: .62rem; color: var(--fk-muted); cursor: pointer; }
 .rv-add:hover { color: var(--fk-gold); border-color: var(--fk-gold); }
+
+/* Mobile fit: standalone product page fills the screen */
+.fk-panel.fk-page { width: 100%; max-width: 1200px !important; max-height: none; overflow: visible; border: 0; box-sizing: border-box; }
+html, body { overflow-x: clip; }
+.shop-page, .shop-header { max-width: 100vw; overflow-x: clip; }
+@media (max-width: 760px) {
+  .shop-page .fk-page { padding-left: 0; padding-right: 0; }
+  .fk-page .fk-left { padding: 1rem; }
+  .fk-page .fk-right { padding: 1rem .9rem 1.5rem; border-radius: 0; }
+  .shop-header * { min-width: 0; }
+}
