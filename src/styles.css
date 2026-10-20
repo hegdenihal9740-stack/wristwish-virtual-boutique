@@ -1314,7 +1314,7 @@ html, body { overflow-x: clip; }
 .shop-page:has(.fk-page) .shop-login-link { color: oklch(0.86 0.1 85); border-color: oklch(0.86 0.1 85); }
 
 /* Black page readability + popup size */
-.fk-page .fk-table dt { color: oklch(0.78 0.01 80); }
+.fk-page .fk-table dt { color: oklch(0.9 0.008 85); }
 .fk-page .fk-thumb-vid { color: oklch(0.88 0.12 85); font-weight: 700; }
 .fk-page .fk-size.is-active { background: oklch(0.82 0.11 85); color: #000; }
 @media (max-width: 768px) { .shop-page .fk-page { padding-bottom: 9.5rem; } }
