@@ -123,16 +123,30 @@ export function FlipkartDetails({
   const addCart = () => { cart.add(w.id); toast.success(`${w.name} (${dial}) added to cart`); };
   return (
     <>
-    {(() => { const body = (
+    {(() => { const viewImg = isFeat(imgs[idx]) ? w.image : imgs[idx]; const popup = (
+      <Dialog open={full} onOpenChange={setFull}>
+        <DialogContent className="fk-full" showCloseButton={false}>
+          <DialogTitle className="sr-only">{w.name}</DialogTitle>
+          <button type="button" className="fk-full-close" onClick={() => setFull(false)} aria-label="Close viewer"><X size={20} /></button>
+          <div className="fk-full-main">
+            <button type="button" className="fk-full-nav is-prev" onClick={() => go(-1)} aria-label="Previous image"><ChevronLeft size={20} /></button>
+            <div className={`fk-full-stage ${zoom ? 'is-zoom' : ''}`} onClick={() => setZoom((z) => !z)}>
+              <img src={viewImg} alt={w.name} draggable={false} />
+            </div>
+            <button type="button" className="fk-full-nav is-next" onClick={() => go(1)} aria-label="Next image"><ChevronRight size={20} /></button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    ); const body = (
         <div className="fk-grid">
           <div className="fk-left">
             <span className="fk-index">{String(idx + 1).padStart(2, '0')} / {String(imgs.length).padStart(2, '0')}</span>
             <button type="button" className={`fk-wish ${wish.includes(w.id) ? 'is-on' : ''}`} aria-label="Add to wishlist" onClick={() => toast.success(wishlist.toggle(w.id) ? 'Added to wishlist' : 'Removed from wishlist')}><Heart size={18} fill={wish.includes(w.id) ? 'currentColor' : 'none'} /></button>
             <div className="fk-slider-wrap">
               <div className="fk-slider" ref={sliderRef} onScroll={onSlide}>
-                {imgs.map((src) => isFeat(src)
+                {imgs.map((src, i) => isFeat(src)
                   ? <div key={src} className="fk-imgbox fk-slide is-feat">{feat}</div>
-                  : <div key={src} className="fk-imgbox fk-slide"><img src={src} alt={w.name} draggable={false} /></div>)}
+                  : <div key={src} className="fk-imgbox fk-slide is-zoomable" onClick={() => { setIdx(i); setZoom(false); setFull(true); }}><img src={src} alt={w.name} draggable={false} /></div>)}
               </div>
               <button type="button" className="fk-slide-nav is-prev" onClick={() => slideTo(idx - 1)} aria-label="Previous image"><ChevronLeft size={20} /></button>
               <button type="button" className="fk-slide-nav is-next" onClick={() => slideTo(idx + 1)} aria-label="Next image"><ChevronRight size={20} /></button>
@@ -241,7 +255,7 @@ export function FlipkartDetails({
             </div>
           </div>
         </div>
-      ); return asPage ? <div className="fk-panel fk-page">{body}</div> : <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="fk-panel">{body}</DialogContent></Dialog>; })()}
+      ); return asPage ? <div className="fk-panel fk-page">{body}{popup}</div> : <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="fk-panel">{body}{popup}</DialogContent></Dialog>; })()}
     </>
   );
 }
