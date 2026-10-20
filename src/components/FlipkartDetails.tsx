@@ -102,7 +102,13 @@ export function FlipkartDetails({
     const n = Math.round(el.scrollLeft / el.clientWidth);
     if (n !== idx) setIdx(n);
   };
+  const press = useRef({ x: 0, y: 0, moved: false });
+  const openPhoto = (i: number) => {
+    if (press.current.moved) return;
+    setIdx(i); setZoom(false); setFull(true);
+  };
   const actionsRef = useRef<HTMLDivElement>(null);
+
   const [showSticky, setShowSticky] = useState(false);
   useEffect(() => {
     const el = actionsRef.current;
