@@ -1256,3 +1256,11 @@ html, body { overflow-x: clip; }
   .fk-page .fk-right { padding: 1rem .9rem 1.5rem; border-radius: 0; }
   .shop-header * { min-width: 0; }
 }
+
+/* Full-screen photo popup with black background */
+.fk-imgbox.is-zoomable { cursor: zoom-in; }
+.fk-full { background: #000 !important; border: none !important; box-shadow: none !important; }
+.fk-full-close { position: absolute; top: .75rem; right: .75rem; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: rgb(255 255 255 / .12); color: #fff; border: 1px solid rgb(255 255 255 / .25); z-index: 2; }
+.fk-full-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: rgb(255 255 255 / .12); color: #fff; border: 1px solid rgb(255 255 255 / .25); z-index: 2; }
+.fk-full-nav.is-prev { left: .75rem; } .fk-full-nav.is-next { right: .75rem; }
+.fk-full-stage.is-zoom { cursor: zoom-out; }
