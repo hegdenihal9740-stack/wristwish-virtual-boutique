@@ -1259,7 +1259,14 @@ html, body { overflow-x: clip; }
 
 /* Full-screen photo popup with black background */
 .fk-imgbox.is-zoomable { cursor: zoom-in; }
-.fk-full { background: #000 !important; border: none !important; box-shadow: none !important; }
+.fk-full {
+  background: #000 !important; border: 1px solid oklch(1 0 0 / .2) !important;
+  box-shadow: 0 30px 80px -20px oklch(0 0 0 / .9) !important;
+  width: min(680px, 92vw) !important; max-width: min(680px, 92vw) !important;
+  height: min(70vh, 620px) !important; max-height: min(70vh, 620px) !important;
+  border-radius: 18px; padding: .75rem !important;
+}
+
 .fk-full-close { position: absolute; top: .75rem; right: .75rem; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: rgb(255 255 255 / .12); color: #fff; border: 1px solid rgb(255 255 255 / .25); z-index: 2; }
 .fk-full-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: rgb(255 255 255 / .12); color: #fff; border: 1px solid rgb(255 255 255 / .25); z-index: 2; }
 .fk-full-nav.is-prev { left: .75rem; } .fk-full-nav.is-next { right: .75rem; }

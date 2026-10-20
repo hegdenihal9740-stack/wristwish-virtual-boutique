@@ -142,11 +142,15 @@ export function FlipkartDetails({
           <div className="fk-left">
             <span className="fk-index">{String(idx + 1).padStart(2, '0')} / {String(imgs.length).padStart(2, '0')}</span>
             <button type="button" className={`fk-wish ${wish.includes(w.id) ? 'is-on' : ''}`} aria-label="Add to wishlist" onClick={() => toast.success(wishlist.toggle(w.id) ? 'Added to wishlist' : 'Removed from wishlist')}><Heart size={18} fill={wish.includes(w.id) ? 'currentColor' : 'none'} /></button>
-            <div className="fk-slider-wrap">
+            <div className="fk-slider-wrap"
+              onPointerDown={(e) => { press.current = { x: e.clientX, y: e.clientY, moved: false }; }}
+              onPointerMove={(e) => { if (Math.hypot(e.clientX - press.current.x, e.clientY - press.current.y) > 10) press.current.moved = true; }}
+            >
               <div className="fk-slider" ref={sliderRef} onScroll={onSlide}>
                 {imgs.map((src, i) => isFeat(src)
                   ? <div key={src} className="fk-imgbox fk-slide is-feat">{feat}</div>
-                  : <div key={src} className="fk-imgbox fk-slide is-zoomable" onClick={() => { setIdx(i); setZoom(false); setFull(true); }}><img src={src} alt={w.name} draggable={false} /></div>)}
+                  : <div key={src} className="fk-imgbox fk-slide is-zoomable" onClick={() => openPhoto(i)}><img src={src} alt={w.name} draggable={false} /></div>)}
+
               </div>
               <button type="button" className="fk-slide-nav is-prev" onClick={() => slideTo(idx - 1)} aria-label="Previous image"><ChevronLeft size={20} /></button>
               <button type="button" className="fk-slide-nav is-next" onClick={() => slideTo(idx + 1)} aria-label="Next image"><ChevronRight size={20} /></button>
