@@ -125,7 +125,7 @@ export function FlipkartDetails({
     <>
     {(() => { const viewImg = isFeat(imgs[idx]) ? w.image : imgs[idx]; const popup = (
       <Dialog open={full} onOpenChange={setFull}>
-        <DialogContent className="fk-full" showCloseButton={false}>
+        <DialogContent className="fk-full">
           <DialogTitle className="sr-only">{w.name}</DialogTitle>
           <button type="button" className="fk-full-close" onClick={() => setFull(false)} aria-label="Close viewer"><X size={20} /></button>
           <div className="fk-full-main">
