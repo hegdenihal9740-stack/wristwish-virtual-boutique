@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { Instagram, Mail, MessageCircle, MoreVertical, Phone, UserRound, ShoppingBag } from 'lucide-react';
+import { Instagram, Mail, MessageCircle, MoreVertical, Phone, UserRound } from 'lucide-react';
 import { toast } from 'sonner';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { cart, useCart } from '@/lib/cart';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable';
 import { BottomNav } from '@/components/BottomNav';
@@ -117,7 +116,7 @@ export function ShopHeader() {
     return () => { window.removeEventListener('pf-customer', read); sub.subscription.unsubscribe(); };
   }, []);
   const { count } = useCart();
-  return <header className="shop-header">
+  const { count } = useCart();
     <div className="shop-menu-wrap">
       <button type="button" className="shop-icon-btn" aria-label="Menu" aria-expanded={menu} onClick={() => setMenu((v) => !v)}><MoreVertical size={20} /></button>
       {menu && <div className="shop-menu">
