@@ -683,27 +683,22 @@ function Index() {
           <div className="section dark">
             <h2>Private aviation.</h2>
             <p>Compact, fast, considered.</p>
-            <img src={watchSteel} data-tone="steel" alt="Luxury steel dive watch" className="watch-img" width={1024} height={1024} loading="lazy" />
           </div>
           <div className="section dark length">
             <h2>Cabin profile.</h2>
             <p>Quietly proportioned.</p>
-            <img src={watchBlack} data-tone="black" alt="Luxury black skeleton watch" className="watch-img" width={1024} height={1024} loading="lazy" />
           </div>
           <div className="section dark wingspan">
             <h2>Swept wings.</h2>
             <p>Built for efficient speed.</p>
-            <img src={watchGold} data-tone="gold" alt="Luxury gold chronograph watch" className="watch-img" width={1024} height={1024} loading="lazy" />
           </div>
           <div className="section dark phalange">
             <h2>Tail geometry.</h2>
             <p>Balanced and unmistakable.</p>
-            <img src={watchRosegold} data-tone="rosegold" alt="Luxury rose gold watch" className="watch-img" width={1024} height={1024} loading="lazy" />
           </div>
           <div className="section dark turbines">
             <h2>Rear turbines.</h2>
             <p>Power with a quieter profile.</p>
-            <img src={watchSteel} data-tone="steel" alt="Luxury steel dive watch" className="watch-img" width={1024} height={1024} loading="lazy" />
           </div>
           <section className="tryon-showcase" aria-labelledby="tryon-title">
             <div className="tryon-copy">
