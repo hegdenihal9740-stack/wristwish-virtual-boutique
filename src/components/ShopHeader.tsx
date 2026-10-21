@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { Instagram, Mail, MessageCircle, MoreVertical, Phone, UserRound, ShoppingBag } from 'lucide-react';
+import { Instagram, Mail, MessageCircle, MoreVertical, Phone, UserRound } from 'lucide-react';
 import { toast } from 'sonner';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { cart, useCart } from '@/lib/cart';
 import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable';
 import { BottomNav } from '@/components/BottomNav';
@@ -116,7 +115,6 @@ export function ShopHeader() {
     window.addEventListener('pf-customer', read);
     return () => { window.removeEventListener('pf-customer', read); sub.subscription.unsubscribe(); };
   }, []);
-  const { count } = useCart();
   return <header className="shop-header">
     <div className="shop-menu-wrap">
       <button type="button" className="shop-icon-btn" aria-label="Menu" aria-expanded={menu} onClick={() => setMenu((v) => !v)}><MoreVertical size={20} /></button>
@@ -127,7 +125,6 @@ export function ShopHeader() {
     </div>
     <Link to="/" className="shop-brand">Private Flight</Link>
     <div className="shop-right">
-      <button type="button" className="shop-icon-btn" aria-label="Open cart" onClick={() => cart.setOpen(true)}><ShoppingBag size={19} />{count > 0 && <span className="shop-count">{count}</span>}</button>
       {customer ? <button type="button" className="shop-login-link" onClick={async () => { await supabase.auth.signOut(); localStorage.removeItem(CUSTOMER_KEY); window.dispatchEvent(new Event('pf-customer')); toast.success('Logged out'); }}><UserRound size={16} /> {customer.name.split(' ')[0]} · Logout</button>
         : <button type="button" className="shop-login-link" onClick={() => setLogin(true)}><UserRound size={16} /> Login / Register</button>}
     </div>

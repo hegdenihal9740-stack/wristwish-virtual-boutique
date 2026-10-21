@@ -1319,5 +1319,24 @@ html, body { overflow-x: clip; }
 .fk-page .fk-size.is-active { background: oklch(0.82 0.11 85); color: #000; }
 @media (max-width: 768px) { .shop-page .fk-page { padding-bottom: 9.5rem; } }
 
+/* ===== Black account page (matches product page) ===== */
+.shop-page.acc-page {
+  background: #000;
+  --fk-bg: #000; --fk-ink: oklch(0.96 0.01 85); --fk-muted: oklch(0.78 0.01 80);
+  --fk-line: oklch(1 0 0 / .18); --fk-soft: #000;
+}
+.shop-page.acc-page .shop-header { border-bottom-color: var(--fk-line); }
+.shop-page.acc-page .acc-card { background: oklch(0.15 0.01 60); color: var(--fk-ink); border-color: var(--fk-line); }
+.shop-page.acc-page .acc-avatar { background: oklch(0.24 0.03 80); color: oklch(0.9 0.01 85); }
+.shop-page.acc-page .acc-tile b { color: oklch(0.78 0.01 80); }
+.shop-page.acc-page .acc-list > * { color: var(--fk-ink); }
+.shop-page.acc-page .acc-back { color: oklch(0.82 0.11 85); }
+.shop-page.acc-page .acc-order-thumbs img { border-color: oklch(1 0 0 / .25); }
+.shop-page.acc-page .acc-move { background: transparent; border: 1px solid oklch(1 0 0 / .35); color: var(--fk-ink); }
+.shop-page.acc-page .bnav { background: oklch(0.1 0.01 60); border-top-color: oklch(1 0 0 / .16); }
+.shop-page.acc-page .bnav-item { color: oklch(0.82 0.01 80); }
+.shop-page.acc-page .bnav-item[data-status="active"] { color: oklch(0.82 0.11 85); }
+.shop-page.acc-page .shop-login-link { color: oklch(0.86 0.1 85); border-color: oklch(0.86 0.1 85); }
+
 
 
