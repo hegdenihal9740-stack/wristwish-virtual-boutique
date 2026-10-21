@@ -311,7 +311,6 @@ function Index() {
           );
            gsap.to(".loading", { autoAlpha: 0, duration: 0.4 });
           gsap.to(".scroll-cta", { opacity: 1 });
-          gsap.set(".blueprint > svg", { autoAlpha: 1 });
 
           const tau = Math.PI * 2;
           // On narrow screens the camera sees a thinner slice of the scene, so
@@ -324,53 +323,6 @@ function Index() {
 
           const sectionDuration = 1;
 
-          gsap.to("#line-length", {
-            strokeDashoffset: 0,
-            scrollTrigger: { trigger: ".length", scrub: true, start: "top bottom", end: "top top" },
-          });
-          gsap.to("#line-wingspan", {
-            strokeDashoffset: 0,
-            scrollTrigger: {
-              trigger: ".wingspan",
-              scrub: true,
-              start: "top 25%",
-              end: "bottom 50%",
-            },
-          });
-          gsap.to("#circle-phalange", {
-            strokeDashoffset: 0,
-            scrollTrigger: {
-              trigger: ".phalange",
-              scrub: true,
-              start: "top 50%",
-              end: "bottom 100%",
-            },
-          });
-          gsap.to("#line-length", {
-            opacity: 0,
-            strokeDashoffset: 80,
-            scrollTrigger: { trigger: ".length", scrub: true, start: "top top", end: "bottom top" },
-          });
-          gsap.to("#line-wingspan", {
-            opacity: 0,
-            strokeDashoffset: 110,
-            scrollTrigger: {
-              trigger: ".wingspan",
-              scrub: true,
-              start: "top top",
-              end: "bottom top",
-            },
-          });
-          gsap.to("#circle-phalange", {
-            opacity: 0,
-            strokeDashoffset: 94,
-            scrollTrigger: {
-              trigger: ".phalange",
-              scrub: true,
-              start: "top top",
-              end: "bottom top",
-            },
-          });
 
           // The jet keeps flying right up to the "See it on your wrist." heading,
           // then fades out. A plain toggle (not a scrubbed tween) so a fast flick
@@ -455,9 +407,6 @@ function Index() {
         cleanups.push(() => ctx.revert());
       }
 
-      gsap.set("#line-length", { strokeDasharray: 80, strokeDashoffset: 80 });
-      gsap.set("#line-wingspan", { strokeDasharray: 110, strokeDashoffset: 110 });
-      gsap.set("#circle-phalange", { strokeDasharray: 94, strokeDashoffset: 94 });
 
       // Obsidian-black stealth paint with warm gold trim to match the site theme.
       const paint = new THREE.MeshPhysicalMaterial({ color: 0x14151a, metalness: 0.62, roughness: 0.26, clearcoat: 1, clearcoatRoughness: 0.06, side: THREE.DoubleSide });
@@ -652,54 +601,6 @@ function Index() {
           </div>
         </div>
 
-        <div className="blueprint">
-          <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ display: "none" }}>
-            <line
-              id="line-length"
-              x1="10"
-              y1="80"
-              x2="90"
-              y2="80"
-              strokeWidth="0.5"
-              stroke="white"
-            />
-            <path
-              id="line-wingspan"
-              d="M10 50, L40 35, M60 35 L90 50"
-              strokeWidth="0.5"
-              stroke="white"
-              fill="none"
-            />
-            <circle
-              id="circle-phalange"
-              cx="60"
-              cy="60"
-              r="15"
-              fill="transparent"
-              strokeWidth="0.5"
-              stroke="white"
-            />
-          </svg>
-          <div className="section dark">
-            <h2>Private aviation.</h2>
-            <p>Compact, fast, considered.</p>
-          </div>
-          <div className="section dark length">
-            <h2>Cabin profile.</h2>
-            <p>Quietly proportioned.</p>
-          </div>
-          <div className="section dark wingspan">
-            <h2>Swept wings.</h2>
-            <p>Built for efficient speed.</p>
-          </div>
-          <div className="section dark phalange">
-            <h2>Tail geometry.</h2>
-            <p>Balanced and unmistakable.</p>
-          </div>
-          <div className="section dark turbines">
-            <h2>Rear turbines.</h2>
-            <p>Power with a quieter profile.</p>
-          </div>
           <section className="tryon-showcase" aria-labelledby="tryon-title">
             <div className="tryon-copy">
               <p className="hero-kicker">New · Virtual try-on</p>
@@ -719,7 +620,6 @@ function Index() {
               </div>
             </div>
           </section>
-        </div>
       </div>
     </div>
   );
